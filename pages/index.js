@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <div>
             <Link href={"/food"}>
-                <div className={"bg-green-100 w-screen h-40 border text-6xl rounded flex justify-center items-center"}>
+                <div className={"bg-green-100  w-64 h-40 border text-6xl rounded flex justify-center items-center"}>
                     😋 饮食
                 </div>
             </Link>
