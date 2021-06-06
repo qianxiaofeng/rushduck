@@ -35,7 +35,7 @@ const HER2_FOODS = [
         rate: RATE.RECOMMEND,
     },
     {
-        name: " greens",
+        name: "greens",
         name_cn: "绿叶菜",
         group: FOOD_GROUP.VEGETABLE,
         rate: RATE.HIGHLY_RECOMMEND,
