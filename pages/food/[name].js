@@ -11,7 +11,10 @@ export default function Food() {
     return (
         <div>
             {
-                food ? <div>{food.name_cn}</div>
+                food ? <div>
+                        <div className={"text-2xl font-bold"}>{food.name_cn}</div>
+                        <div>细节待完善</div>
+                    </div>
                     :
                     <div>该食物无记录</div>
             }
