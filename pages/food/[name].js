@@ -2,7 +2,7 @@ import React from 'react'
 import {useRouter} from "next/router";
 import {FIND_HER2_FOODS_BY_NAME} from "../../data/HER2_Foods";
 
-export default function Food() {
+export default function FoodPage() {
     const router = useRouter();
     const {name} = router.query;
 

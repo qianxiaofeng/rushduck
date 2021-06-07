@@ -9,7 +9,7 @@ export default function Timeline({data}) {
                 {
                     data.map((d, index) => {
                         return (
-                            <div className={"flex flex-row"}>
+                            <div className={"flex flex-row"} key={index}>
                                 <div className={"w-1/5 flex justify-center"}>
                                     <div
                                         className={"relative flex justify-center items-center h-full w-1 bg-green-300"}>

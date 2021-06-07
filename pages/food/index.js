@@ -3,7 +3,7 @@ import {FOOD_GROUP, HER2_FOODS} from "/data/HER2_Foods"
 import FilterGrid from "/components/FilterGrid";
 import CardSet from "/components/CardSet"
 
-export default function Foods() {
+export default function FoodPage() {
     let defaultGroupFilters = Object.values(FOOD_GROUP).map(o => ({...o, selected: true}));
     let defaultFilteredFoods = HER2_FOODS.slice().sort((a, b) => b.rate.value - a.rate.value);
     defaultFilteredFoods.forEach(f => {
