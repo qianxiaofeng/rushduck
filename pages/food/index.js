@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {FOOD_GROUP, HER2_FOODS} from "/data/HER2_Foods"
+import {FOOD_GROUP, HER2_FOODS} from "/data/HER2_FOODS"
 import FilterGrid from "/components/FilterGrid";
 import CardSet from "/components/CardSet"
 
