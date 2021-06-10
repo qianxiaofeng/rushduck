@@ -2,18 +2,19 @@ import React from "react";
 import classNames from "classnames";
 
 export default function FilterGrid({filters, applyFilters}) {
-    const default_cls = "bg-red-50";
-    const selected_cls = "bg-blue-50";
+    const defaultStyle = "col-span-1 w-6 rounded-t-full text-center py-2";
+    const unselectedStyle = "bg-gradient-to-b from-gray-500 to-gray-300 text-white font-thin";
+    const selectedStyle = " bg-gradient-to-b from-green-800 to-green-500 text-white";
 
     return (
-        <div className={"grid grid-cols-12 gap-1"}>
+        <div className={"w-full grid grid-cols-12 gap-1"}>
             {
                 filters.map((filter, index) => {
                     return (
                         <div key={filter.name} className={
-                            classNames(
-                                {[`${default_cls}`]: !filter.selected},
-                                {[`${selected_cls}`]: filter.selected}
+                            classNames(defaultStyle,
+                                {[`${unselectedStyle}`]: !filter.selected},
+                                {[`${selectedStyle}`]: filter.selected}
                             )}
                              onClick={(e) => applyFilters(e, index)}
                         >
