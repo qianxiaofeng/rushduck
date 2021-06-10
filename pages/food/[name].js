@@ -7,9 +7,8 @@ export default function FoodPage() {
     const {name} = router.query;
 
     const food = FIND_HER2_FOODS_BY_NAME(name);
-    console.log(food);
     return (
-        <div>
+        <div className={"flex justify-center text-center w-full"}>
             {
                 food ? <div>
                         <div className={"text-2xl font-bold"}>{food.name_cn}</div>

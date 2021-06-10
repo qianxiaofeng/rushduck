@@ -42,8 +42,8 @@ export default function FoodPage() {
     }
 
     return (
-        <div>
-            <div>
+        <div className={"w-full"}>
+            <div className={"w-full"}>
                 <FilterGrid filters={groupFilters} applyFilters={applyGroupFilters}/>
             </div>
             <div className={"my-6"}>
