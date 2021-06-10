@@ -9,6 +9,7 @@ export default function Layout(props) {
             <main className={" px-4 py-4 mx-auto md:px-6 md:py-12 lg:container flex flex-grow w-full h-full"}>
                 {props.children}
             </main>
+            <div id={"modal-root"}/>
             <Footer/>
         </div>
     )

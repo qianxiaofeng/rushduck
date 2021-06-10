@@ -2,15 +2,18 @@ import React, {useEffect, useState} from 'react';
 import classNames from "classnames";
 import dayjs from "dayjs";
 import isoWeek from "dayjs/plugin/isoWeek";
+import Modal from "./Modal";
+import useModal from "./useModal";
 
-export default function Calendar() {
+export default function Calendar({events}) {
     dayjs.extend(isoWeek);
     let defaultDisplayDate = dayjs().startOf('month');
     let [displayDate, setDisplayDate] = useState(defaultDisplayDate);
     let [data, setData] = useState([]);
+    let {isShowingModal, toggleModal} = useModal();
+    let [eventModalData, setEventModalData] = useState({});
 
-
-    function calDisplayData(displayDate) {
+    function calDisplayData(displayDate, events) {
         let startDate = displayDate.isoWeekday(1);
         const lastDateInMonth = displayDate.endOf('month');
         let endDate;
@@ -25,16 +28,23 @@ export default function Calendar() {
 
         for (let i = 0; i < count; i++) {
             let tmpDate = startDate.add(i, 'd');
+            let tmpEvents = events.filter(e => (e.date.diff(tmpDate, 'day') === 0));
             displayData.push(
                 {
                     date: tmpDate,
                     dom: tmpDate.date(),
                     isCurrentMonth: tmpDate.month() === displayDate.month(),
                     isCurrentDate: tmpDate.diff(today, 'd') === 0,
+                    events: tmpEvents,
                 }
             )
         }
         return displayData;
+    }
+
+    function handleEventClicked(event) {
+        setEventModalData(event.event);
+        toggleModal();
     }
 
     function handlePreviousMonth() {
@@ -48,7 +58,7 @@ export default function Calendar() {
     }
 
     useEffect(() => {
-        setData(calDisplayData(displayDate));
+        setData(calDisplayData(displayDate, events));
     }, [displayDate])
 
     const WEEKDAY_NAMES = ["一", "二", "三", "四", "五", "六", "日"];
@@ -116,18 +126,34 @@ export default function Calendar() {
                 {
                     //table dates
                     data.map((d, i) => {
-                        const dateStyle = classNames("w-full h-8 text-center align-bottom", {"text-gray-300": !d.isCurrentMonth}, {"border-2  text-white bg-blue-600": d.isCurrentDate})
+                        const dateStyle = classNames("w-full h-8 text-center align-bottom", {"text-gray-300": !d.isCurrentMonth}, {"border-2  text-white bg-blue-500": d.isCurrentDate})
                         return (
-                            <div className={"col-span-1 border border-gray-100 flex justify-center align-center"}
+                            <div className={"col-span-1 border border-gray-100 flex flex-col justify-start "}
                                  key={`date-${i}`}>
                                 <div className={`${dateStyle}`}>
                                     {d.dom}
                                 </div>
+                                {d.events.map((event, i) => {
+                                    return (
+                                        <div key={`event-${i}`}
+                                             className={"text-sm text-center truncate border border-blue-300 rounded-lg my-1"}
+                                             onClick={() => handleEventClicked(event)}
+                                        >
+                                            {event.event.title}
+                                        </div>
+                                    )
+                                })}
                             </div>
                         );
                     })
                 }
             </div>
+            <Modal show={isShowingModal} onClose={toggleModal}>
+                <div className={"h-full w-full flex flex-col justify-center px-6 py-6 bg-gray-50"}>
+                    <div className={"text-center text-3xl"}>{eventModalData.title}</div>
+                    <div className={"text-left pt-10 text-lg"}>{eventModalData.detail}</div>
+                </div>
+            </Modal>
         </div>
     )
 }

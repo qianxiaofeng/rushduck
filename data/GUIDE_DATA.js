@@ -1,15 +1,19 @@
 const GUIDES = [
     {
-        title: "饮食",
-        detail: "Привет Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis culpa deserunt, dignissimos dolor esse fugit ipsam minus odit officiis placeat qui, quidem quis soluta vero? Adipisci alias eius et iure nam nihil reiciendis saepe, voluptatem. Alias cumque dicta dignissimos ea et laborum, minima similique.",
+        title: "每日饮食",
+        detail: "少糖，少油，适量优质蛋白质，高纤维。每日主食 250g，蔬菜 300g-500g，水果200g 2-3个，鱼虾类150g，蛋类50g，豆和豆制品 30g-50g",
     },
     {
-        title: "饮食",
-        detail: "Привет Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis culpa deserunt, dignissimos dolor esse fugit ipsam minus odit officiis placeat qui, quidem quis soluta vero? Adipisci alias eius et iure nam nihil reiciendis saepe, voluptatem. Alias cumque dicta dignissimos ea et laborum, minima similique.",
+        title: "每日运动",
+        detail: "每日最少45分钟 低强度运动，",
     },
     {
-        title: "饮食",
-        detail: "Привет Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis culpa deserunt, dignissimos dolor esse fugit ipsam minus odit officiis placeat qui, quidem quis soluta vero? Adipisci alias eius et iure nam nihil reiciendis saepe, voluptatem. Alias cumque dicta dignissimos ea et laborum, minima similique.",
+        title: "每日饮水量： 2000-3000ml",
+        detail: "如：4瓶（500ml）白开水 + 2杯（200ml玻璃杯）绿茶+1碗粥+1碗汤",
+    },
+    {
+        title: "每日良好的心态",
+        detail: "每日静坐1小时，睡前练习正念呼吸10分钟，念经抄经30分钟-1小时，娱乐活动1-2小时",
     }
 ]
 

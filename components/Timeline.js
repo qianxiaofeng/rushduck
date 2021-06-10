@@ -21,8 +21,8 @@ export default function Timeline({data}) {
                                 </div>
                                 <div className={"w-4/5 px-2 py-10"}>
                                     <div className={"w-full bg-white px-4 py-5 rounded-lg flex flex-col  shadow"}>
-                                        <div className={"font-bold"}>{d.title}</div>
-                                        <p className={"leading-none text-gray-600 pt-4"}>
+                                        <div className={"font-bold text-3xl"}>{d.title}</div>
+                                        <p className={"leading-normal text-gray-600 pt-4 text-xl"}>
                                             {d.detail}
                                         </p>
                                     </div>
