@@ -5,20 +5,20 @@ import isoWeek from "dayjs/plugin/isoWeek";
 import Modal from "./Modal";
 import useModal from "./useModal";
 
-export default function Calendar({events}) {
+export default function Calendar({getEventsByDate}) {
     dayjs.extend(isoWeek);
-    let defaultDisplayDate = dayjs().startOf('month');
-    let [displayDate, setDisplayDate] = useState(defaultDisplayDate);
+    let defaultTargetMonthFirstDate = dayjs().startOf('month');
+    let [targetMonthFirstDate, setTargetMonthFirstDate] = useState(defaultTargetMonthFirstDate);
     let [data, setData] = useState([]);
     let {isShowingModal, toggleModal} = useModal();
     let [eventModalData, setEventModalData] = useState({});
 
-    function calDisplayData(displayDate, events) {
-        let startDate = displayDate.isoWeekday(1);
-        const lastDateInMonth = displayDate.endOf('month');
+    function calTargetMonthData(targetMonthFirstDate) {
+        let startDate = targetMonthFirstDate.isoWeekday(1);
+        const lastDateInMonth = targetMonthFirstDate.endOf('month');
         let endDate;
         if (lastDateInMonth.isoWeekday() === 7) {
-            endDate = displayDate.endOf('month');
+            endDate = targetMonthFirstDate.endOf('month');
         } else {
             endDate = lastDateInMonth.isoWeekday(7);
         }
@@ -27,15 +27,15 @@ export default function Calendar({events}) {
         let displayData = [];
 
         for (let i = 0; i < count; i++) {
-            let tmpDate = startDate.add(i, 'd');
-            let tmpEvents = events.filter(e => (e.date.diff(tmpDate, 'day') === 0));
+            let targetDate = startDate.add(i, 'd');
+            let targetEvents = getEventsByDate(targetDate);
             displayData.push(
                 {
-                    date: tmpDate,
-                    dom: tmpDate.date(),
-                    isCurrentMonth: tmpDate.month() === displayDate.month(),
-                    isCurrentDate: tmpDate.diff(today, 'd') === 0,
-                    events: tmpEvents,
+                    date: targetDate,
+                    dom: targetDate.date(),
+                    isCurrentMonth: targetDate.month() === targetMonthFirstDate.month(),
+                    isCurrentDate: targetDate.diff(today, 'd') === 0,
+                    events: targetEvents,
                 }
             )
         }
@@ -43,23 +43,23 @@ export default function Calendar({events}) {
     }
 
     function handleEventClicked(event) {
-        setEventModalData(event.event);
+        setEventModalData(event);
         toggleModal();
     }
 
     function handlePreviousMonth() {
-        let newDisplayDate = displayDate.subtract(1, 'month');
-        setDisplayDate(newDisplayDate);
+        let newDisplayDate = targetMonthFirstDate.subtract(1, 'month');
+        setTargetMonthFirstDate(newDisplayDate);
     }
 
     function handleNextMonth() {
-        let newDisplayDate = displayDate.add(1, 'month');
-        setDisplayDate(newDisplayDate);
+        let newDisplayDate = targetMonthFirstDate.add(1, 'month');
+        setTargetMonthFirstDate(newDisplayDate);
     }
 
     useEffect(() => {
-        setData(calDisplayData(displayDate, events));
-    }, [displayDate])
+        setData(calTargetMonthData(targetMonthFirstDate));
+    }, [targetMonthFirstDate])
 
     const WEEKDAY_NAMES = ["一", "二", "三", "四", "五", "六", "日"];
     const MONTH_NAMES = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
@@ -69,10 +69,10 @@ export default function Calendar({events}) {
             <div className={"flex flex-row justify-around h-6"}>
                 <div className={"w-1/2 flex flex-row justify-around items-center"}>
                     <div className={""}>
-                        {displayDate.year()}
+                        {targetMonthFirstDate.year()}
                     </div>
                     <div>
-                        {MONTH_NAMES[displayDate.month()]}
+                        {MONTH_NAMES[targetMonthFirstDate.month()]}
                     </div>
                 </div>
                 <div className={"w-1/8  border border-gray-300 rounded-lg flex justify-between items-center"}>
@@ -139,7 +139,7 @@ export default function Calendar({events}) {
                                              className={"text-sm text-center truncate border border-blue-300 rounded-lg my-1"}
                                              onClick={() => handleEventClicked(event)}
                                         >
-                                            {event.event.title}
+                                            {event.title}
                                         </div>
                                     )
                                 })}
@@ -149,7 +149,7 @@ export default function Calendar({events}) {
                 }
             </div>
             <Modal show={isShowingModal} onClose={toggleModal}>
-                <div className={"h-full w-full flex flex-col justify-center px-6 py-6 bg-gray-50"}>
+                <div className={"h-full w-full rounded-lg flex flex-col justify-center px-6 py-6 bg-gray-50 "}>
                     <div className={"text-center text-3xl"}>{eventModalData.title}</div>
                     <div className={"text-left pt-10 text-lg"}>{eventModalData.detail}</div>
                 </div>

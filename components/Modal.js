@@ -14,11 +14,11 @@ export default function Modal({show, onClose, children}) {
     }
 
     const modalContent = show ? (
-        <div className={"w-full h-full absolute inset-0 flex justify-center items-center"}>
-            <div className={"w-full h-full  absolute inset-0 bg-gray-300 opacity-50 "} onClick={handleCloseClick}>
+        <div className={"absolute top-0 left-0 w-full h-full flex justify-center items-center"}>
+            <div className={"fixed w-screen h-screen  top-0 left-0 bg-gray-300 opacity-50 "} onClick={handleCloseClick}>
 
             </div>
-            <div className={"w-4/5 h-4/5 bg-white rounded-lg z-10 relative"}>
+            <div className={"w-1/2 h-1/2 fixed inset-1/4 bg-white rounded-lg z-10 "}>
                 <div className={"absolute -top-3 -right-3 flex justify-center align-center"}>
                     <a className={"w-8 h-8 rounded-full border-2 text-center bg-white text-gray-600 text-base font-bold"}
                        onClick={handleCloseClick}
