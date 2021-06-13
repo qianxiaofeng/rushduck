@@ -1,5 +1,5 @@
 import 'tailwindcss/tailwind.css'
-import Layout from "/components/layout/Layout";
+import Layout from "../components/layout/Layout";
 import React from "react";
 import Head from "next/head";
 

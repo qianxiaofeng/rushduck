@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import {FOOD_GROUP, HER2_FOODS} from "/data/HER2_FOODS"
-import FilterGrid from "/components/FilterGrid";
-import CardSet from "/components/CardSet"
+import {FOOD_GROUP, HER2_FOODS} from "../../data/HER2_FOODS"
+import FilterGrid from "../../components/FilterGrid";
+import CardSet from "../../components/CardSet"
 
 export default function FoodPage() {
     let defaultGroupFilters = Object.values(FOOD_GROUP).map(o => ({...o, selected: true}));
