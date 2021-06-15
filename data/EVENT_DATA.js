@@ -10,13 +10,13 @@ const EVENT_DATA = [
     {
         date: dayjs('2021-06-10T00:00:00.000+08:00'),
         title: "血常规",
-        detail: "",
+        detail: "白细胞3.3饭前",
 
     },
     {
         date: dayjs('2021-06-13T00:00:00.000+08:00'),
         title: "血常规",
-        detail: "",
+        detail: "白细胞1.6饭前",
 
     },
     {
@@ -29,6 +29,12 @@ const EVENT_DATA = [
         date: dayjs('2021-06-14T00:00:00.000+08:00'),
         title: "升白针",
         detail: "200μg",
+
+    },
+    {
+        date: dayjs('2021-06-15T00:00:00.000+08:00'),
+        title: "血常规",
+        detail: "白细胞9.4饭后",
 
     },
     {

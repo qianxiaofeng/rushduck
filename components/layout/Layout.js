@@ -9,14 +9,12 @@ const CustomLink = (props) => {
     const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
     console.log(href);
     if (isInternalLink) {
-        console.log("isInternalLink")
         return (
             <Link href={href}>
                 <a {...props} />
             </Link>
         );
     }
-    console.log("is not internal")
 
     return <a target="_blank" rel="noopener noreferrer" href={href} {...props} />;
 };
