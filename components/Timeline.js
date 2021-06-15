@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "next/link";
 
 export default function Timeline({data}) {
 
@@ -14,7 +15,7 @@ export default function Timeline({data}) {
                                     <div
                                         className={"relative flex justify-center items-center h-full w-1 bg-green-300"}>
                                         <div
-                                            className={"absolute h-8 w-8 flex flex-wrap items-center justify-center bg-white border-2 border-green-600 rounded-full "}>
+                                            className={"absolute h-8 w-8 flex flex-col items-center justify-center  bg-white border-2 border-green-600 rounded-full "}>
                                             <p>{index + 1}</p>
                                         </div>
                                     </div>
@@ -25,6 +26,9 @@ export default function Timeline({data}) {
                                         <p className={"leading-normal text-gray-600 pt-4 text-xl"}>
                                             {d.detail}
                                         </p>
+                                        <Link href={d.more}>
+                                            <p className={"text-blue-900 text-xl"}>更多详情→</p>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

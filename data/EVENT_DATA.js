@@ -20,6 +20,18 @@ const EVENT_DATA = [
 
     },
     {
+        date: dayjs('2021-06-13T00:00:00.000+08:00'),
+        title: "升白针",
+        detail: "200μg",
+
+    },
+    {
+        date: dayjs('2021-06-14T00:00:00.000+08:00'),
+        title: "升白针",
+        detail: "200μg",
+
+    },
+    {
         date: dayjs('2021-06-17T00:00:00.000+08:00'),
         title: "血常规",
         detail: "",

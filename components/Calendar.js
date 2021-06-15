@@ -65,7 +65,7 @@ export default function Calendar({getEventsByDate}) {
     const MONTH_NAMES = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
 
     return (
-        <div className={"h-full w-full flex flex-grow flex-col justify-between"}>
+        <div className={"h-full w-full flex flex-col justify-between"}>
             <div className={"flex flex-row justify-around h-6"}>
                 <div className={"w-1/2 flex flex-row justify-around items-center"}>
                     <div className={""}>
@@ -76,7 +76,7 @@ export default function Calendar({getEventsByDate}) {
                     </div>
                 </div>
                 <div className={"w-1/8  border border-gray-300 rounded-lg flex justify-between items-center"}>
-                    <button className={"h-6 w-6  hover:bg-gray-300"}
+                    <button className={"h-6 w-6"}
                             onClick={handlePreviousMonth}
                     >
                         <svg className="text-gray-500 " fill="none"
@@ -92,7 +92,7 @@ export default function Calendar({getEventsByDate}) {
                                   d="M 2,4 l 0,16 "/>
                         </svg>
                     </div>
-                    <button className={"h-6 w-6  hover:bg-gray-300"}
+                    <button className={"h-6 w-6"}
                             onClick={handleNextMonth}
                     >
                         <svg className="text-gray-500 " fill="none"
@@ -122,13 +122,13 @@ export default function Calendar({getEventsByDate}) {
                     })
                 }
             </div>
-            <div className={"overflow-hidden bg-white grid grid-cols-7 h-full w-full"}>
+            <div className={"bg-white grid grid-cols-7 h-full w-full"}>
                 {
                     //table dates
                     data.map((d, i) => {
                         const dateStyle = classNames("w-full h-8 text-center align-bottom", {"text-gray-300": !d.isCurrentMonth}, {"border-2  text-white bg-blue-500": d.isCurrentDate})
                         return (
-                            <div className={"col-span-1 border border-gray-100 flex flex-col justify-start "}
+                            <div className={"border border-gray-100 flex flex-col justify-start "}
                                  key={`date-${i}`}>
                                 <div className={`${dateStyle}`}>
                                     {d.dom}

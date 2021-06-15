@@ -91,14 +91,11 @@ export default function CardSet({cards}) {
 
                     return (<div key={i}>
                             <Link href={c.link}>
-                                <a>
                                     <div className={"flex flex-row h-24"}>
                                         {ratingMeter}
                                         <div
                                             className={classNames("w-4/5  overflow-ellipsis overflow-hidden px-4 border-2 rounded-r-lg text-2xl bg-gray-200", borderColorStyle)}>{c.name_cn}</div>
                                     </div>
-                                </a>
-
                             </Link>
                         </div>
                     )
