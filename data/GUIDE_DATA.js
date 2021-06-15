@@ -6,7 +6,7 @@ const GUIDES = [
     },
     {
         title: "每日运动",
-        detail: "每日最少45分钟 低强度运动，",
+        detail: "每日最少45分钟低强度运动",
         more: "/guide/exercise",
     },
     {
