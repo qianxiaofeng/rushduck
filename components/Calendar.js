@@ -122,36 +122,38 @@ export default function Calendar({getEventsByDate}) {
                     })
                 }
             </div>
-            <div className={"bg-white grid grid-cols-7 h-full w-full"}>
-                {
-                    //table dates
-                    data.map((d, i) => {
-                        const dateStyle = classNames("w-full h-8 text-center align-bottom", {"text-gray-300": !d.isCurrentMonth}, {"border-2  text-white bg-blue-500": d.isCurrentDate})
-                        return (
-                            <div className={"border border-gray-100 flex flex-col justify-start "}
-                                 key={`date-${i}`}>
-                                <div className={`${dateStyle}`}>
-                                    {d.dom}
+            <div className={"block"}>
+                <div className={"bg-white  grid grid-cols-7 h-full w-full"}>
+                    {
+                        //table dates
+                        data.map((d, i) => {
+                            const dateStyle = classNames("w-full h-8 text-center align-bottom", {"text-gray-300": !d.isCurrentMonth}, {"border-2  text-white bg-blue-500": d.isCurrentDate})
+                            return (
+                                <div className={"border border-gray-100 flex flex-col justify-start "}
+                                     key={`date-${i}`}>
+                                    <div className={`${dateStyle}`}>
+                                        {d.dom}
+                                    </div>
+                                    {d.events.map((event, i) => {
+                                        return (
+                                            <div key={`event-${i}`}
+                                                 className={"text-sm text-center truncate border border-blue-300 rounded-lg my-1"}
+                                                 onClick={() => handleEventClicked(event)}
+                                            >
+                                                {event.title}
+                                            </div>
+                                        )
+                                    })}
                                 </div>
-                                {d.events.map((event, i) => {
-                                    return (
-                                        <div key={`event-${i}`}
-                                             className={"text-sm text-center truncate border border-blue-300 rounded-lg my-1"}
-                                             onClick={() => handleEventClicked(event)}
-                                        >
-                                            {event.title}
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        );
-                    })
-                }
+                            );
+                        })
+                    }
+                </div>
             </div>
             <Modal show={isShowingModal} onClose={toggleModal}>
                 <div className={"h-full w-full rounded-lg flex flex-col justify-center px-6 py-6 bg-gray-50 "}>
                     <div className={"text-center text-3xl"}>{eventModalData.title}</div>
-                    <div className={"text-left pt-10 text-lg"}>{eventModalData.detail}</div>
+                    <div className={"text-center pt-10 text-lg"}>{eventModalData.detail}</div>
                 </div>
             </Modal>
         </div>
